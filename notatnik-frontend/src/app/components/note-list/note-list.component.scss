@@ -1,0 +1,35 @@
+.notebook__note {
+  color: #e8eaed;
+  border-color: #5f6368;
+  border-radius: 8px;
+  border: 1px solid #5f6368;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-family: "Roboto", arial, sans-serif;
+  flex-basis: calc(25% - 10px);
+  flex-grow: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.notebook {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.notebook__note-title {
+  font-weight: 700;
+  text-align: center;
+}
+
+.notebook__note-content {
+    text-align: center;
+}

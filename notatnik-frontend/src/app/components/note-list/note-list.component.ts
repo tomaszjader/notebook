@@ -16,6 +16,10 @@ export class NoteListComponent {
   ngOnInit() {
     this.noteService.getNotes(this.userId).subscribe((data:any) => {
       console.log(data)
+      this.notes = data;
     });
+  }
+  onClickNote(note:any){
+    console.log(note);
   }
 }
