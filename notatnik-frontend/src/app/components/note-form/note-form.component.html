@@ -1,1 +1,42 @@
-<p>note-form works!</p>
+<div class="form">
+<button
+  mat-dialog-close
+  color="primary"
+  mat-mini-fab>
+  <mat-icon>clear</mat-icon>
+</button>
+<form class="note-form" [formGroup]="noteForm">
+  <mat-form-field color="primary">
+    <mat-label>Title</mat-label>
+    <input formControlName="title" matInput  [value]="note?.title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Content</mat-label>
+    <textarea
+    formControlName="content"
+      matInput
+      [value]="note?.content"
+    ></textarea>
+  </mat-form-field>
+  <div>
+    <button
+    *ngIf="data.action == 'edit'"
+      color="primary"
+      mat-mini-fab
+      mat-dialog-close
+      (click)="onDelete()"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button
+      color="primary"
+      mat-mini-fab
+      mat-dialog-close
+      (click)="onSave()">
+      <mat-icon>save</mat-icon>
+    </button>
+    
+  </div>
+</form>
+</div>
