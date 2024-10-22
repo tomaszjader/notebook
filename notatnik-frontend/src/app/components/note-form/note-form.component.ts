@@ -23,6 +23,7 @@ export class NoteFormComponent implements OnInit {
     private noteService: NoteService
   ) {
     this.note = data.note;
+    this.userId = data.userId;
     if (data.action == 'add') {
       this.note.title = '';
       this.note.content = '';

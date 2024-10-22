@@ -7,4 +7,18 @@
 }
 .form {
     background-color: #202124;
+    height: 100%;
+    border: 1px solid #5f6368;
+    
+}
+.form1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:40px;
 }

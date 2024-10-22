@@ -27,4 +27,8 @@ export class NoteService {
   updateNote(userId: number, noteId: number, data: any): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${userId}/notes/${noteId}`, data);
   }
+  
+  addUser(userName: string, email: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/`, {username:userName, email:email});
+  }
 }

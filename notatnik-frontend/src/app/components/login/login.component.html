@@ -1,0 +1,13 @@
+<p>login works!</p>
+<form class="note-form" [formGroup]="loginForm">
+  <mat-form-field color="primary">
+    <mat-label>email</mat-label>
+    <input formControlName="email" matInput />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input formControlName="password" matInput />
+  </mat-form-field>
+  <button color="primary" mat-mini-fab (click)="logIn()">logIn</button>
+</form>

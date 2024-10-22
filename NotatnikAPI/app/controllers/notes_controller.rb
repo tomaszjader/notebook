@@ -3,13 +3,13 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
-    @notes = Note.all
-
+    @notes = Note.where(user_id: params[:user_id])
     render json: @notes
   end
 
   # GET /notes/1
   def show
+    @notes = Note.find(params[:user_id])
     render json: @note
   end
 
