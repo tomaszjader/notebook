@@ -17,9 +17,9 @@ class NotesController < ApplicationController
   def create
     @user = User.find(params[:user_id])  # Znajdujesz użytkownika na podstawie parametru user_id
     @note = @user.notes.build(note_params)  # Tworzysz nową notatkę powiązaną z tym użytkownikiem
-    
+
     if @note.save
-      redirect_to user_note_url(@user, @note), notice: 'Notatka została pomyślnie utworzona.'  # Przekierowujesz z user_id i note_id
+      redirect_to user_note_url(@user, @note), notice: "Notatka została pomyślnie utworzona."  # Przekierowujesz z user_id i note_id
     else
       render :new
     end
@@ -38,6 +38,31 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy!
   end
+
+  def short
+    @note = Note.find(params[:user_id])
+    client = OpenAI::Client.new(
+          access_token: ENV["OPENAI_API_KEY"],
+          log_errors: true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production because it could leak private data to your logs.
+        )
+        begin
+          response = client.chat(
+            parameters: {
+              model: "gpt-4", # Użyj poprawnej nazwy modelu, np. "gpt-4" lub "gpt-3.5-turbo".
+              messages: [ { role: "system", content: "Read the following notes and provide a concise summary. Focus on the main ideas and key points, omitting any unnecessary details. Aim for clarity and brevity, capturing the essence of the content in just a few sentences." }, { role: "user", content: @note.content } ]
+            }
+          )
+
+          puts response.dig("choices", 0, "message", "content")
+        #   render plain: response.dig("choices", 0, "message", "content")
+        render json: { "content": response.dig("choices", 0, "message", "content") }
+        rescue => e
+          # Logowanie błędów w trybie development
+          Rails.logger.error("Błąd OpenAI: #{e.message}") if Rails.env.development?
+          #   render plain: "blad"
+        end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
