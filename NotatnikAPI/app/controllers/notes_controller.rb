@@ -40,7 +40,10 @@ class NotesController < ApplicationController
   end
 
   def short
-    @note = Note.find(params[:user_id])
+    user_id = params[:user_id]
+    note_id = params[:id]    
+    note = Note.find_by(id: note_id, user_id: user_id)
+    puts note.content
     client = OpenAI::Client.new(
           access_token: ENV["OPENAI_API_KEY"],
           log_errors: true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production because it could leak private data to your logs.
@@ -49,7 +52,7 @@ class NotesController < ApplicationController
           response = client.chat(
             parameters: {
               model: "gpt-4", # Użyj poprawnej nazwy modelu, np. "gpt-4" lub "gpt-3.5-turbo".
-              messages: [ { role: "system", content: "Read the following notes and provide a concise summary. Focus on the main ideas and key points, omitting any unnecessary details. Aim for clarity and brevity, capturing the essence of the content in just a few sentences." }, { role: "user", content: @note.content } ]
+              messages: [ { role: "system", content: "Read the following notes and provide a concise summary. Focus on the main ideas and key points, omitting any unnecessary details. Aim for clarity and brevity, capturing the essence of the content in just a few sentences." }, { role: "user", content: note.content } ]
             }
           )
 
