@@ -31,4 +31,8 @@ export class NoteService {
   addUser(userName: string, email: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/`, {username:userName, email:email});
   }
+
+  shortNote(userId: number, noteId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${userId}/notes/${noteId}/short`);
+  }
 }

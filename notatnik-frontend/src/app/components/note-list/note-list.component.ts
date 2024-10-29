@@ -36,7 +36,7 @@ export class NoteListComponent {
   }
   onClickNote(note: any) {
     this.dialog
-      .open(NoteFormComponent, { height: '300px',
+      .open(NoteFormComponent, { height: '400px',
         width: '600px', data: { note: note, action: 'edit',userId: this.userId} })
       .afterClosed().subscribe(()=>{
         this.noteService.getNotes(this.userId).subscribe((data: any) => {

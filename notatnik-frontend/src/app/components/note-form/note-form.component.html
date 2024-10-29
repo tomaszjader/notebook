@@ -9,14 +9,20 @@
         <input formControlName="title" matInput [value]="note?.title" />
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field class="textarea1">
         <mat-label>Content</mat-label>
-        <textarea
+        <textarea class="textarea"
           formControlName="content"
           matInput
           [value]="note?.content"
         ></textarea>
       </mat-form-field>
+      <div  class="short-message">
+        <div *ngIf="shortMessage">
+          {{shortMessage}}
+        </div>
+        
+      </div>
       <div class="buttons">
         <button
           *ngIf="data.action == 'edit'"
@@ -27,6 +33,11 @@
         >
           <mat-icon>delete</mat-icon>
         </button>
+        <button color="primary" mat-mini-fab *ngIf="data.action == 'edit'" (click)="onShort()">
+          <mat-icon> sticky_note_2 </mat-icon>
+          AI
+        </button>
+
         <button
           color="primary"
           mat-mini-fab

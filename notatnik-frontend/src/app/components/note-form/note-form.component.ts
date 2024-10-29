@@ -18,6 +18,7 @@ export class NoteFormComponent implements OnInit {
 
   userId = 1;
   note: any;
+  shortMessage ='';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private noteService: NoteService
@@ -62,5 +63,10 @@ export class NoteFormComponent implements OnInit {
     this.noteService.deleteNote(this.userId, this.note.id).subscribe((data) => {
       console.log(data);
     });
+  }
+  onShort(){
+    this.noteService.shortNote(this.userId, this.note.id).subscribe((data)=>{
+      this.shortMessage =data.content;
+    })
   }
 }
