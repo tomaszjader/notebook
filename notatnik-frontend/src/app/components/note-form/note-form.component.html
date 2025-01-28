@@ -1,15 +1,15 @@
-<div class="form">
-  <button mat-dialog-close color="primary" mat-mini-fab>
+<div class="note-form">
+  <button class="note-form__close-btn" mat-dialog-close color="primary" mat-mini-fab>
     <mat-icon>clear</mat-icon>
   </button>
-  <div class="form1">
-    <form class="note-form" [formGroup]="noteForm">
-      <mat-form-field color="primary">
+  <div class="note-form__wrapper">
+    <form class="note-form__form" [formGroup]="noteForm">
+      <mat-form-field class="note-form__field" color="primary">
         <mat-label>Title</mat-label>
         <input formControlName="title" matInput [value]="note?.title" />
       </mat-form-field>
 
-      <mat-form-field class="textarea1">
+      <mat-form-field class="note-form__textarea note-form__textarea--large">
         <mat-label>Content</mat-label>
         <textarea class="textarea"
           formControlName="content"
@@ -23,7 +23,7 @@
         </div>
         
       </div>
-      <div class="buttons">
+      <div class="note-form__buttons">
         <button
           *ngIf="data.action == 'edit'"
           color="primary"
