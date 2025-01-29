@@ -1,17 +1,17 @@
-<ul class="notebook">
-    <li *ngFor="let note of notes" class="notebook__note" (click)="onClickNote(note)">
-        <h2 class="notebook__note-title">
+<ul class="notes">
+    <li *ngFor="let note of notes" class="notes__item" (click)="onClickNote(note)">
+        <h2 class="notes__title">
             {{note.title}}
         </h2>
-        <p class="notebook__note-content">
+        <p class="notes__content">
             {{note.content}}
         </p>
     </li>
 </ul>
-<button color="primary" (click)="onClickNoteForm()" mat-mini-fab class="fab-button"matTooltip="Add new note"matTooltipPosition="above">
+<button color="primary" (click)="onClickNoteForm()" mat-mini-fab class="button button--fab button--fab-right" matTooltip="Add new note" matTooltipPosition="above">
     <mat-icon>add</mat-icon>
 </button>
 
-<button color="primary" mat-mini-fab class="fab-button-left" (click)="logout()">
+<button color="primary" mat-mini-fab class="button button--fab button--fab-left" (click)="logout()">
     <mat-icon>logout</mat-icon>
 </button>
