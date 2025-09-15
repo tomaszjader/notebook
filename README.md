@@ -4,7 +4,7 @@
 
 ✨ **Frontend**: Built with Angular using TypeScript, Angular Material Design, and SCSS, delivering a clean, modern, and responsive user interface.  
 
-⚙️ **Backend**: Developed in Ruby, handling server-side logic and seamless integration with OpenAI.  
+⚙️ **Backend**: Developed in Ruby, handling server-side logic and seamless integration with OpenAI API.  
 
 The application allows users to quickly generate concise and well-structured notes from any provided content, boosting productivity and improving information management.  
 
